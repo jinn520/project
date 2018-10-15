@@ -1,0 +1,23 @@
+<!--pages/addUser/addUser.wxml-->
+<view>
+    {{departmentName}}
+</view>
+<view bindtap='cli'>点击</view>
+<view wx:if="{{isclick}}">
+  111111111111
+  <view>
+    {{departmentName.name}}
+  </view>
+  <view wx:for="{{departmentName}}">
+    {{index}}: {{item.name}}
+  </view>
+</view>
+<view>
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+    <picker-view-column>
+      <view wx:for="{{departmentName}}" style="line-height: 50px">
+        {{index}}+{{item.name}}
+      </view>
+    </picker-view-column>
+  </picker-view>
+</view>
