@@ -1,9 +1,17 @@
 <!--pages/judge/judge.wxml-->
 <text>绑定用户</text>
-<picker-view indicator-style="height: 50px;" style="width: 50%; height: 200px;" value="{{value}}" bindchange="bindChange">
-    <picker-view-column>
-      <view wx:for="{{departmentName}}" style="line-height: 50px">
-        {{item.name}}
-      </view>
-    </picker-view-column>
-  </picker-view>
+<picker-view indicator-style="height: 50px;" style="width: 50%; height: 200px;" bindchange="bindChange">
+  <picker-view-column>
+    <view wx:for="{{departmentName}}" style="line-height: 50px">
+      {{item.name}}
+    </view>
+  </picker-view-column>
+</picker-view>
+<picker-view indicator-style="height: 50px;" style="width: 50%; height: 200px;" bindchange="bindChange2">
+  <picker-view-column>
+    <view wx:for="{{partuserinfo}}" style="line-height: 50px">
+      {{item.name}}
+    </view>
+  </picker-view-column>
+</picker-view>
+<view bindtap='addwxname'>提交</view>

@@ -1,6 +1,6 @@
 <!--pages/addUser/addUser.wxml-->
 <view>
-  <picker-view indicator-style="height: 50px;" style="width: 50%; height: 200px;" value="{{value}}" bindchange="bindChange">
+  <picker-view indicator-style="height: 50px;" style="width: 50%; height: 200px;" bindchange="bindChange">
     <picker-view-column>
       <view wx:for="{{departmentName}}" style="line-height: 50px">
         {{item.name}}
