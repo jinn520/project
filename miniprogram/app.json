@@ -1,8 +1,8 @@
 {
   "cloud": true,
   "pages": [
-    "pages/addUser/addUser",
     "pages/judge/judge",
+    "pages/addUser/addUser",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",

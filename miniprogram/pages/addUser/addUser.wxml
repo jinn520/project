@@ -1,23 +1,15 @@
 <!--pages/addUser/addUser.wxml-->
 <view>
-    {{departmentName}}
-</view>
-<view bindtap='cli'>点击</view>
-<view wx:if="{{isclick}}">
-  111111111111
-  <view>
-    {{departmentName.name}}
-  </view>
-  <view wx:for="{{departmentName}}">
-    {{index}}: {{item.name}}
-  </view>
-</view>
-<view>
-  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+  <picker-view indicator-style="height: 50px;" style="width: 50%; height: 200px;" value="{{value}}" bindchange="bindChange">
     <picker-view-column>
       <view wx:for="{{departmentName}}" style="line-height: 50px">
-        {{index}}+{{item.name}}
+        {{item.name}}
       </view>
     </picker-view-column>
   </picker-view>
+  <view>
+    <text>姓名</text>
+    <input type='number' placeholder='请输入姓名' placeholder-class="placeholderStyle" bindblur="getName"></input>
+  </view>
+  <view bindtap='adduserinfo'>提交</view>
 </view>

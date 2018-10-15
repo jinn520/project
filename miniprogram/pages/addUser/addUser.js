@@ -7,7 +7,9 @@ Page({
   data: {
     array:[{id:1,name:"12"},{id:2,name:"qwe"}],
     departmentName:[],
-    isclick:false
+    isclick:false,
+    id:1,
+    name:null
   },
 
 cli: function () {
@@ -16,13 +18,6 @@ cli: function () {
   })
   console.log(this.data.departmentName);
 },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -35,53 +30,44 @@ cli: function () {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res.data)
+        var middata = []
         for(var index in res.data){
-          that.data.departmentName.push({id:res.data[index]["id"],name:res.data[index]["name"]})
+          middata.push({id:res.data[index]["id"],name:res.data[index]["name"]})
         }
-        console.log(that.data.departmentName)
+        that.setData({
+          departmentName: middata
+        })
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  bindChange: function (e) {
+    this.setData({
+      id:this.data.departmentName[e.detail.value]["id"]
+    })
+    // console.log(this.data.id)
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  getName: function(e){
+    this.setData({
+      name: e.detail["value"]
+    })
+    // console.log(this.data.name);
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  adduserinfo: function(){
+    if(this.data.name!=null){
+      var userinfo = {
+        rolesid: 1,
+        name: this.data.name,
+        departmentid: this.data.id
+      }
+      wx.request({
+        url: 'https://jinn520.club/user',
+        method: "POST",
+        data: userinfo,
+        success(res){
+          console.log(res)
+        } 
+      })
+    }
+    else console.log("用户名不能为空！")
   }
 })
