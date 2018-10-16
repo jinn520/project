@@ -35,7 +35,7 @@ Page({
             wx.showToast({
               title: '正在加载',
               icon: 'loading',
-              duration: 1000,
+              duration: 500,
               mask: true
             })
             setTimeout(function () {
@@ -116,22 +116,30 @@ Page({
   },
 
   addwxname: function () {
-    var addwxnameinfo = {
-      wxname: this.data.openid,
-      name: this.data.name
+    var addwxnameinfo
+    if(this.data.name!=null){
+      addwxnameinfo = {
+        wxname: this.data.openid,
+        name: this.data.name
+      }
     }
-    console.log(addwxnameinfo)
+    else {
+      addwxnameinfo = {
+        wxname: this.data.openid,
+        name: this.data.partuserinfo[0]["name"]
+        }
+    }
+    console.log(addwxnameinfo);
     wx.request({
       url: 'https://jinn520.club/user/addwxname',
       method: 'POST',
       data: addwxnameinfo,
-      success: function(res) {
+      success: function (res) {
         console.log(res)
       },
-      fail: function(res) {
+      fail: function (res) {
         console.log(res);
       },
-      complete: function(res) {},
     })
   },
 

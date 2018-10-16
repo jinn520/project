@@ -1,12 +1,14 @@
 <!--pages/judge/judge.wxml-->
-<text>绑定用户</text>
-<picker-view indicator-style="height: 50px;" style="width: 50%; height: 200px;" bindchange="bindChange">
+<view class='partGroup'>
+  <view class='partname'>请选择部门:</view>
+  <picker-view class='partchoose' indicator-style="height: 50rpx;" style="width: 50%; height: 200rpx;" bindchange="bindChange">
   <picker-view-column>
     <view wx:for="{{departmentName}}" style="line-height: 50px">
       {{item.name}}
     </view>
   </picker-view-column>
 </picker-view>
+</view>
 <picker-view indicator-style="height: 50px;" style="width: 50%; height: 200px;" bindchange="bindChange2">
   <picker-view-column>
     <view wx:for="{{partuserinfo}}" style="line-height: 50px">

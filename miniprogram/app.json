@@ -1,15 +1,16 @@
 {
   "cloud": true,
   "pages": [
-    "pages/judge/judge",
-    "pages/addUser/addUser",
+    
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
     "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib"
+    "pages/chooseLib/chooseLib",
+    "pages/judge/judge",
+    "pages/addUser/addUser"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
