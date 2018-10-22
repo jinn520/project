@@ -9,7 +9,8 @@ Page({
     userinfo: [],
     partuserinfo: [],
     openid:null,
-    name:null
+    name:null,
+    index:0
   },
 
   /**
@@ -31,20 +32,17 @@ Page({
             'content-type': 'application/json' // 默认值
           },
           success(res) {
-            // console.log(res.data)
-            wx.showToast({
-              title: '正在加载',
-              icon: 'loading',
-              duration: 500,
-              mask: true
-            })
-            setTimeout(function () {
-              if (!res.data) {
+            console.log(res.data)
+            if(res.data != ''){
+              if (res.data.rolesid == 1 || res.data.rolesid == 2){
                 wx.redirectTo({
                   url: '../index/index'
                 })
               }
-            }, 500)
+              else wx.redirectTo({
+                url: '../admin/admin'
+              })
+            }
           }
         })
       },

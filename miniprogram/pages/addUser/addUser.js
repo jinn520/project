@@ -53,6 +53,7 @@ cli: function () {
     // console.log(this.data.name);
   },
   adduserinfo: function(){
+    var that=this
     if(this.data.name!=null){
       var userinfo = {
         rolesid: 1,
@@ -65,6 +66,9 @@ cli: function () {
         data: userinfo,
         success(res){
           console.log(res)
+          that.setData({
+            name:''
+          })
         } 
       })
     }

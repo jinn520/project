@@ -2,14 +2,18 @@
   "cloud": true,
   "pages": [
     
+    "pages/admin/admin",
     "pages/index/index",
+    "pages/judge/judge",
+    "pages/statistics/statistics",
+    "pages/suggest/suggest",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
     "pages/addFunction/addFunction",
     "pages/deployFunctions/deployFunctions",
     "pages/chooseLib/chooseLib",
-    "pages/judge/judge",
+    "pages/welcome/welcome",
     "pages/addUser/addUser"
   ],
   "window": {
@@ -18,5 +22,35 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/admin/admin",
+        "text": "首页",
+        "iconPath": "/images/tarbar-home-before.png",
+        "selectedIconPath": "/images/tarbar-home.png"
+      },
+      {
+        "pagePath": "pages/addUser/addUser",
+        "text": "添加用户",
+        "iconPath": "/images/tarbar-dining-before.png",
+        "selectedIconPath": "/images/tarbar-dining.png"
+      },
+      {
+        "pagePath": "pages/statistics/statistics",
+        "text": "统计",
+        "iconPath": "/images/tarbar-statistics-before.png",
+        "selectedIconPath": "/images/tarbar-statistics.png"
+      },
+      {
+        "pagePath": "pages/suggest/suggest",
+        "text": "建议",
+        "iconPath": "/images/tarbar-suggest-before.png",
+        "selectedIconPath": "/images/tarbar-suggest.png"
+      }
+    ]
   }
 }
