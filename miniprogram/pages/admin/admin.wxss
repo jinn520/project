@@ -21,9 +21,11 @@ page {
   margin-left: 25px;
 }
 .section {
+  width: 100%;
   margin: 10px 0;
   background-color: #fff;
   border-top: 1px solid #ddd;
+  padding-bottom: 20rpx;
 }
 .item {
   height: 40px;
@@ -33,7 +35,8 @@ page {
 }
 .item-label {
   display: inline-block;
-  width: 75px;
+  width: 60px;
+  height: 40px;
   margin-left: 10px;
   font-size: 32rpx;
   text-align: justify;
@@ -48,21 +51,27 @@ page {
 .item-content {
   position: absolute;
   top: 7px;
-  left: 110px;
+  left: 90px;
+}
+.item-radio {
+  top: 0;
+}
+radio {
+  transform:scale(.7);
 }
 .item-time {
   top: 0;
 }
 .placeholderStyle {
-  font-size: 28rpx;
+  font-size: 30rpx;
 }
-.go-container {
-  width: 250rpx;
-  height: 60rpx;
-  border: 1px solid #bfd0e9;
+.btn {
+  display: block;
+  width: 300rpx;
+  height: 80rpx;
+  margin: 10rpx auto;
+  line-height: 80rpx;
+  border: 1px solid #405f80;
   border-radius: 5px;
   text-align: center;
-  margin-top: 20rpx;
-  margin-left: 250rpx;
-  background-color: #d6e6c3;
 }

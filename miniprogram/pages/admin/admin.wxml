@@ -17,7 +17,7 @@
   </picker>
   <view class="item">
     <text class='item-label'>操作标识</text>
-    <radio-group class='item-content' bindchange='radiogroup'>
+    <radio-group class='item-content item-radio' bindchange='radiogroup'>
       <radio value="0" checked="{{checked}}"/>停餐
       <radio value="1"/>加餐
     </radio-group>
@@ -26,8 +26,8 @@
     <text class='item-label'>备注信息</text>
     <input type='text' placeholder='请输入备注' bindblur="getThings" class='item-content' placeholder-class="placeholderStyle"></input>
   </view>
-</view>
-<radio-group bindchange='radio'>
+  <radio-group bindchange='radio'>
       <radio value="stopmeal"/>确认无误！
 </radio-group>
-<button type='mini' plain='true' disabled="{{isSubmit}}" bindtap="submitInfo">提交信息</button>
+<button class='btn' type='mini' plain='true' disabled="{{isSubmit}}" bindtap="submitInfo">提交信息</button>
+</view>
