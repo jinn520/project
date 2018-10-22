@@ -1,7 +1,7 @@
 {
   "cloud": true,
   "pages": [
-    
+    "pages/welcome/welcome",
     "pages/admin/admin",
     "pages/index/index",
     "pages/judge/judge",
@@ -13,7 +13,6 @@
     "pages/addFunction/addFunction",
     "pages/deployFunctions/deployFunctions",
     "pages/chooseLib/chooseLib",
-    "pages/welcome/welcome",
     "pages/addUser/addUser"
   ],
   "window": {

@@ -1,9 +1,6 @@
 // pages/admin/admin.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     userinfo:[],
     year: '',
@@ -23,13 +20,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
@@ -46,11 +36,11 @@ Page({
     var myDate = new Date()
     this.setData({
       year: myDate.getFullYear(),
-      month: this.isAddZero(myDate.getMonth+1),
-      day: this.isAddZero(myDate.getDate()),
-      hour: this.isAddZero(myDate.getHours()),
-      minute: this.isAddZero(myDate.getMinutes()),
-      second: this.isAddZero(myDate.getSeconds()),
+      month: myDate.getMonth()+1,
+      day: myDate.getDate(),
+      hour: myDate.getHours(),
+      minute: myDate.getMinutes(),
+      second: myDate.getSeconds(),
     })
     var endYear = myDate.getFullYear()
     var endMonth = myDate.getMonth()+7
@@ -126,22 +116,38 @@ Page({
     })
   },
   submitInfo: function(e){
-    
     var stopmealinfo={
-      'userid': this.data.userinfo.id,
-      'begin': this.data.date + "T" +this.data.hour + ":" + this.data.minute + ":" +this.data.second,
-      'end': this.data.dateend + "T" + this.data.hour + ":" + this.data.minute + ":" + this.data.second,
+      'userid': this.data.userinfo[0]['id'],
+      'begin': this.chaifen(this.data.date) + "T" +this.isAddZero(this.data.hour) + ":" + this.isAddZero(this.data.minute) + ":" + this.isAddZero(this.data.second),
+      'end': this.chaifen(this.data.dateend) + "T" + this.isAddZero(this.data.hour) + ":" + this.isAddZero(this.data.minute) + ":" + this.isAddZero(this.data.second),
       'sign': this.data.stopmealsign,
       'things': this.data.things
     }
     console.log(stopmealinfo);
+    wx.request({
+      url: 'https://jinn520.club/stopmeal',
+      method: 'POST',
+      data: stopmealinfo,
+      success(suc){
+        console.log(suc)
+      }
+    })
   },
 
   isAddZero: function(arr){
-    console.log(arr)
-    if(arr<10){
-      arr = '0'+arr
-    }
+    if(arr < 10)
+      arr = '0' + arr
     return arr
-  }
+  },
+  chaifen: function (e) {
+    var b = e.split('-')
+    if(b[1] < 10){
+      b[1] = '0' + b[1]
+    }
+    if(b[2] < 10){
+      b[2] = '0' + b[2]
+    }
+    var c = b[0] + '-' + b[1] + '-' + b[2]
+    return c
+  },
 })
