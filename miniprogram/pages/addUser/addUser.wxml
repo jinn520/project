@@ -4,7 +4,7 @@
     
       <picker-view class='picker-content' indicator-style="height: 40px;" style="width: calc(100% - 70px); height: 100px;" bindchange="bindChange">
         <picker-view-column>
-          <view wx:for="{{departmentName}}" style="line-height: 40px">
+          <view wx:for="{{departmentName}}" wx:key="{{name}}" style="line-height: 40px">
             {{item.name}}
           </view>
         </picker-view-column>

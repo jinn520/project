@@ -1,1 +1,14 @@
 /* pages/statistics/statistics.wxss */
+.calendarView {
+  padding-top: 50rpx
+}
+.calendar {
+  background-color:white; /*背景色为白色*/
+  padding-top: 5rpx;    /*上内边距为10px*/
+  color: #38ACFF;
+  border-radius: 15px;   /*添加边框圆角*/
+  border: 2rpx solid #38ACFF;
+  -webkit-box-shadow:0 0 10px #38ACFF;
+  -moz-box-shadow:0 0 10px #38ACFF;
+  box-shadow:0 0 10px #38ACFF;
+}

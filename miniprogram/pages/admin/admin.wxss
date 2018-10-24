@@ -35,7 +35,7 @@ page {
 }
 .item-label {
   display: inline-block;
-  width: 60px;
+  width: 140rpx;
   height: 40px;
   margin-left: 10px;
   font-size: 32rpx;
@@ -51,7 +51,7 @@ page {
 .item-content {
   position: absolute;
   top: 7px;
-  left: 90px;
+  left: 210rpx;
 }
 .item-radio {
   top: 0;
@@ -74,4 +74,7 @@ radio {
   border: 1px solid #405f80;
   border-radius: 5px;
   text-align: center;
+}
+.confirm {
+  padding-left: 10rpx;
 }

@@ -1,10 +1,10 @@
 {
   "cloud": true,
   "pages": [
-    "pages/statistics/statistics",
+    "pages/welcome/welcome",
     "pages/admin/admin",
     "pages/addUser/addUser",
-    "pages/welcome/welcome",
+    "pages/statistics/statistics",
     "pages/index/index",
     "pages/judge/judge",
     "pages/suggest/suggest",
@@ -21,6 +21,12 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
+  },
+  "plugins": {
+    "calendar": {
+      "version": "1.1.3",
+      "provider": "wx92c68dae5a8bb046"
+    }
   },
   "tabBar": {
     "color": "#333",
@@ -51,11 +57,5 @@
         "selectedIconPath": "/images/tarbar-suggest.png"
       }
     ]
-  },
-  "plugins": {
-    "calendar": {
-      "version": "1.1.3",
-      "provider": "wx92c68dae5a8bb046"
-    }
   }
 }

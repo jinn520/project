@@ -1,6 +1,6 @@
 <view class='tips'>
   <icon type='info' size='20'></icon>
-  <text>只能操作往后半年</text>
+  <text>只能操作当月</text>
 </view>
 <view class="section">
   <picker mode="date" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
@@ -26,8 +26,8 @@
     <text class='item-label'>备注信息</text>
     <input type='text' placeholder='请输入备注' bindblur="getThings" class='item-content' placeholder-class="placeholderStyle"></input>
   </view>
-  <radio-group bindchange='radio'>
+  <radio-group bindchange='radio' class='confirm'>
       <radio value="stopmeal"/>确认无误！
-</radio-group>
+  </radio-group>
 <button class='btn' type='mini' plain='true' disabled="{{isSubmit}}" bindtap="submitInfo">提交信息</button>
 </view>

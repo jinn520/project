@@ -16,7 +16,7 @@ page {
   position: absolute;
   top: 0;
   left: 0;
-  width: 60px;
+  width: 140rpx;
   margin-left: 10px;
   font-size: 32rpx;
   height: 100px;
@@ -32,7 +32,8 @@ page {
 .picker-content {
   position: absolute;
   top: 0;
-  left: 90px;
+  left: 140rpx;
+  padding-left: 70rpx;
 }
 .item {
   height: 40px;
@@ -43,7 +44,7 @@ page {
 
 .item-label {
   display: inline-block;
-  width: 60px;
+  width: 140rpx;
   height: 40px;
   margin-left: 10px;
   font-size: 32rpx;
@@ -60,7 +61,7 @@ page {
 .item-content {
   position: absolute;
   top: 7px;
-  left: 90px;
+  left: 210rpx;
 }
 
 .placeholderStyle {
