@@ -12,3 +12,24 @@
   -moz-box-shadow:0 0 10px #38ACFF;
   box-shadow:0 0 10px #38ACFF;
 }
+.section {
+  width: 100%;
+  margin: 10px 0;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  padding-bottom: 20rpx;
+}
+.item {
+  height: 80rpx;
+  line-height: 40px;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+.item-label {
+  display: inline-block;
+  width: 160rpx;
+  height: 40px;
+  margin-left: 10px;
+  font-size: 32rpx;
+  text-align: justify;
+}

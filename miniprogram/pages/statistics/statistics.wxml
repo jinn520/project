@@ -2,3 +2,15 @@
 <view class='calendarView'>
   <calendar calendar-style="calendar"  lunar='true' header-style="calendar-header"  board-style="calendar-board" days-color="{{dayStyle}}" weeks-type="cn" binddayClick="dayClick" bindnextMonth="next" bindprevMonth="prev" binddateChange="dateChange"/>
 </view>
+<view class='section' >
+  <view class='item'>
+    <label class='item-label'>点击日期：</label>{{dateclick}}
+  </view>
+  <view class='item'>
+    <label class='item-label'>当前状态：</label>{{sign}}
+  </view>
+  <view class='item'>
+    <label class='item-label'>备注信息：</label>{{things}}
+  </view>
+  <button disabled='{{disabledClick}}' bindtap='clickupdate'>修改状态</button>
+</view>
