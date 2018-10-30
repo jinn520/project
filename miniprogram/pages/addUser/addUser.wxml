@@ -1,4 +1,4 @@
-<view class="section">
+<view class="section" wx:if="{{permissions}}">
   <view class='picker-item'>
     <text class='picker-label'>所属部门</text>
     

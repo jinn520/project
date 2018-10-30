@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    permissions: false,
     array:[{id:1,name:"12"},{id:2,name:"qwe"}],
     departmentName:[],
     isclick:false,

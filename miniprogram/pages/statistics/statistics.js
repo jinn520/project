@@ -4,25 +4,23 @@ Page({
   data: {
     dayStyle: [
       
-    ],
-    isAddDayStyleLength: true,
-    userinfo: [],
-    month: new Date().getMonth() + 1,
-    year: new Date().getFullYear(),
-    day: new Date().getDate(),
-    monthpri: new Date().getMonth() + 1,
-    yearpri: new Date().getFullYear(),
-    daypri: new Date().getDate(),
-    clock: new Date().getHours(),
+    ], //日期颜色
+    isAddDayStyleLength: true, //dayStyle长度是否可加，点击改变颜色用
+    userinfo: [], //获取的用户信息
+    month: new Date().getMonth() + 1, //记录当前月份并随用户点击修改
+    year: new Date().getFullYear(), //记录当前年份并随用户点击修改
+    day: new Date().getDate(), //记录当前日并随用户点击修改
+    monthpri: new Date().getMonth() + 1, //记录当前月份，不能修改
+    yearpri: new Date().getFullYear(), //记录当前年份，不能修改
+    daypri: new Date().getDate(), //记录当前日，不能修改
+    clock: new Date().getHours(), //获取当前时间（时），判断是否9点（是否可修改）
     dateclick: '',
     sign: '',
     things: '',
     disabledClick: true
   },
-  onLoad() {
-
-  },
-  dayClick: function (event) {
+  dayClick: function (event) {//日期点击事件
+  console.log(this.data)
     if(this.data.isAddDayStyleLength == true){
       var midDayStyle = this.data.dayStyle
       midDayStyle.push({ month: 'current', day: '', color: 'white', background: '#FF4040' })
@@ -88,19 +86,19 @@ Page({
     return arr
   },
   onReady: function(){
-    var that = this
-    wx.getStorage({
-      key: 'userinfo',
-      success(res) {
-        console.log("[自定义函数][statistics] 获取storage信息成功！ ")
-        that.setData({
-          userinfo: res.data
-        })
-        that.updateDate()
-      }
-    })
+    
   },
 
+  onShow: function(){
+    const app = getApp()
+    this.setData({
+      userinfo: app.globalData,
+      dateclick: '',
+      sign: '',
+      things: '',
+    })
+    this.updateDate()
+  },
   updateDate: function(){
     let that = this
     let mealInfo = {
@@ -108,7 +106,10 @@ Page({
       year: this.data.year,
       month: this.data.month
     }
-    this.setData({ dayStyle: [] })
+    this.setData({
+      dayStyle: [],
+      isAddDayStyleLength: true
+    })
     wx.request({
       url: 'https://jinn520.club/stopmeal/getstopmeal',
       data: mealInfo,
@@ -137,9 +138,13 @@ Page({
       }
     }else {
       if(this.data.clock >= 9){
-        allDay.push({ month: 'current', day: day, color: 'white', background: '#90EE90' })
+        if(sign == 0){
+          allDay.push({ month: 'current', day: day, color: 'white', background: '#90EE90' })
+        }
       }else {
-        allDay.push({ month: 'current', day: day, color: 'white', background: '#32CD32' })
+        if(sign == 0){
+          allDay.push({ month: 'current', day: day, color: 'white', background: '#32CD32' })
+        }
       }
     }
     this.setData({
@@ -301,5 +306,11 @@ Page({
         }
       }
     })
-  }
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
 })

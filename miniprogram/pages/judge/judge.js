@@ -8,64 +8,29 @@ Page({
     departmentName: [],
     userinfo: [],
     partuserinfo: [],
-    openid:null,
+    openid: '',
     name:null,
     index:0
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var that = this
-    wx.cloud.callFunction({
-      name: 'login',
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        that.setData({
-          openid: res.result.openid
-        })
-        wx.request({
-          url: 'https://jinn520.club/user/' + res.result.openid, //查询该openid是否绑定用户，绑定则跳转主页，未绑定则需绑定
-          method: "GET",
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success(res) {
-            console.log(res.data)
-            if(res.data != ''){
-              if (res.data.rolesid == 1 || res.data.rolesid == 2){
-                wx.redirectTo({
-                  url: '../index/index'
-                })
-              }
-              else wx.redirectTo({
-                url: '../admin/admin'
-              })
-            }
-          }
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
-      }
+  onLoad: function(){
+    wx.showToast({
+      title: '请绑定用户',
+      mask:'true'
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
     var that=this
+    const app = getApp()
+    this.setData({
+      openid: app.globalData.openid
+    })
     wx.request({
       url: 'https://jinn520.club/department',//查找部门信息
       method: "GET",
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
       success(res) {
         var middata = []
         for (var index in res.data) {
@@ -82,12 +47,18 @@ Page({
         method: 'GET',
         success(res) {
           var middata2 = []
+          var middate3 = []
           for (var index in res.data) {
             middata2.push({ departmentid: res.data[index]["departmentid"], name: res.data[index]["name"] })
+            if (res.data[index]["departmentid"] == that.data.departmentName[0]["id"]){
+              middate3.push({ departmentid: res.data[index]["departmentid"], name: res.data[index]["name"] })
+            }
           }
           that.setData({
             userinfo: middata2,
+            partuserinfo: middate3
           })
+          console.log(that.data)
         }
       })
     }, 200)
@@ -106,8 +77,6 @@ Page({
   },
 
   bindChange2: function (e) {
-    console.log(this.data.openid)
-    console.log("选择的名字是： " + this.data.userinfo[e.detail.value]["name"])
     this.setData({
       name: this.data.userinfo[e.detail.value]["name"]
     })
@@ -134,6 +103,9 @@ Page({
       data: addwxnameinfo,
       success: function (res) {
         console.log(res)
+        wx.navigateBack({
+          delta: 1
+        })
       },
       fail: function (res) {
         console.log(res);

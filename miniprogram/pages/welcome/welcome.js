@@ -6,26 +6,23 @@ Page({
    */
   data: {
     userinfo: [],
-    openid:''
+    openid:'',
+    isloading: true
   },
 
   goHome: function () {
+    var that =this
+    const app = getApp()
+    app.globalData = this.data.userinfo
     wx.switchTab({
       url: '../admin/admin'
     });
-    wx.setStorage({
-      key: 'userinfo',
-      data: this.data.userinfo,
-      success(res){
-        // console.log("成功:"+res);
-      }
-    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onShow: function (options) {
     var that = this
     wx.cloud.callFunction({
       name: 'login',
@@ -41,11 +38,20 @@ Page({
             'content-type': 'application/json' // 默认值
           },
           success(result) {
-            // console.log(result.data)
-            that.setData({
-              userinfo: [{id: result.data.id,name: result.data.name, rolesid: result.data.rolesid, departmentid: result.data.departmentid, openid: that.data.openid}]
-            })
-            // console.log(that.data)
+            if(result.data != ""){
+              that.setData({
+                userinfo: [{ id: result.data.id, name: result.data.name, rolesid: result.data.rolesid, departmentid: result.data.departmentid, openid: that.data.openid }],
+                isloading: false
+              })
+            }else {
+              console.log("[自定义函数] [welcome] 获取用户信息失败，该微信没有绑定用户")
+              const app = getApp()
+              app.globalData.openid = that.data.openid
+              wx.navigateTo({
+                url: '../judge/judge'
+              })
+            }
+
           }
         })
       },
@@ -62,13 +68,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+   
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onLoad: function () {
 
   },
 

@@ -1,22 +1,19 @@
-// pages/admin/admin.js
 Page({
 
   data: {
-    userinfo:[],
-    year: '',
-    month: '',
-    day: '',
-    hour: '',
-    minute: '',
-    second: '',
-    date: '',//第一个picker用户选择的日期
-    dateend: '',//第二个picker用户选择的日期
-    startDate:'',//日期选择范围的开始时间
-    endDate:'',//日期选择范围的最后时间
-    checked: true, //操作标识
-    isSubmit: true,//按键屏蔽
-    stopmealsign: 0,//停餐标识，0为停餐，1为加餐
-    things: ''//备注信息，可为空
+    userinfo: [],
+    yearPri: new Date().getFullYear(),
+    monthPri: new Date().getMonth() + 1,
+    dayPri: new Date().getDate(),
+    hourPri: new Date().getHours(),
+    startDatePri: '',
+    endDatePri: '',
+    startDate: '',
+    endDate: '',
+    sign: 0,
+    checked: true,
+    things: '',
+    isSubmit: true
   },
 
   /**
@@ -24,66 +21,59 @@ Page({
    */
   onReady: function () {
     var that = this
-    wx.getStorage({
-      key: 'userinfo',
-      success(res){
-        console.log("[自定义函数][admin] 获取storage信息成功！ ")
-        that.setData({
-          userinfo: res.data
-        })
-      }
-    })
-    var myDate = new Date()
+    const app = getApp()
     this.setData({
-      year: myDate.getFullYear(),
-      month: myDate.getMonth()+1,
-      day: myDate.getDate(),
-      hour: myDate.getHours(),
-      minute: myDate.getMinutes(),
-      second: myDate.getSeconds(),
+      userinfo: app.globalData
     })
-    var endYear = myDate.getFullYear()
-    var endMonth = myDate.getMonth()+7
-    if(endMonth > 12){
-      endYear = endYear + 1
-      endMonth = endMonth - 12
+    var endDay = new Date(this.data.yearPri, this.data.monthPri, 0).getDate()
+    if(this.data.hourPri >= 9){
+      let daybegin = this.data.dayPri + 1
+      this.setData({
+        startDatePri: this.data.yearPri + "-" + this.isAddZero(this.data.monthPri) + "-" + this.isAddZero(daybegin),
+        endDatePri: this.data.yearPri + "-" + this.isAddZero(this.data.monthPri) + "-" + endDay,
+        startDate: this.data.yearPri + "-" + this.isAddZero(this.data.monthPri) + "-" + this.isAddZero(daybegin),
+        endDate: this.data.yearPri + "-" + this.isAddZero(this.data.monthPri) + "-" + this.isAddZero(daybegin)
+      })
+    }else {
+      this.setData({
+        startDatePri: this.data.yearPri + "-" + this.isAddZero(this.data.monthPri) + "-" + this.isAddZero(this.data.dayPri),
+        endDatePri: this.data.yearPri + "-" + this.isAddZero(this.data.monthPri) + "-" + endDay,
+        startDate: this.data.yearPri + "-" + this.isAddZero(this.data.monthPri) + "-" + this.isAddZero(this.data.dayPri),
+        endDate: this.data.yearPri + "-" + this.isAddZero(this.data.monthPri) + "-" + this.isAddZero(this.data.dayPri)
+      })
     }
-    var endDaypri = myDate.getDate()
-    var endDay = new Date(endYear, endMonth, 0).getDate()
-    if(endDaypri > endDay){
-      endDaypri = endDay
-    }
-    console.log("[自定义函数][admin]" + endMonth + "月有" + endDay + "天")
-    this.setData({
-      date: this.data.year + "-" + this.data.month + "-" + this.data.day,
-      dateend: this.data.year + "-" + this.data.month + "-" + this.data.day,
-      startDate: this.data.year + "-" + this.data.month + "-" + this.data.day,
-      endDate: endYear + "-" + endMonth + "-" + endDaypri
-    })
-    console.log(this.data);
   },
 
-  bindDateChange: function(e){
-    if (this.data.date != e.detail.value){
-      var compareDate = this.compareDate(e.detail.value,this.data.dateend)
-      console.log(compareDate)
-      if(!compareDate){
-        this.setData({
-          date: e.detail.value,
-          dateend: e.detail.value
-        })
-      }
-      else {
-        this.setData({
-          date: e.detail.value,
-        })
-      }
+  bindDateChange: function (e) {
+    if (this.compareDate(e.detail.value, this.data.endDate)){
+      this.setData({
+        startDate: e.detail.value
+      })
+    }else {
+      this.setData({
+        startDate: e.detail.value,
+        endDate: e.detail.value
+      })
     }
   },
-  bindDateChange2: function(e){
-    console.log(e.detail)
+  bindDateChange2: function (e) {
     this.setData({
-      dateend: e.detail.value
+      endDate: e.detail.value
+    })
+  },
+  radiogroup: function (e) {
+    this.setData({
+      sign: e.detail.value
+    })
+  },
+  radio: function (e) {
+    this.setData({
+      isSubmit: false
+    })
+  },
+  getThings: function (e) {
+    this.setData({
+      things: e.detail.value
     })
   },
   compareDate: function (startDate, endDate) {
@@ -98,56 +88,45 @@ Page({
     }
     return true;
   },
-
-  radiogroup: function (e) {
-    this.setData({
-      stopmealsign: e.detail.value
-    })
-  },
-
-  radio: function (e) {
-    this.setData({
-      isSubmit: false
-    })
-  },
-  getThings: function (e) {
-    this.setData({
-      things: e.detail.value
-    })
-  },
-  submitInfo: function(e){
-    var stopmealinfo={
-      'userid': this.data.userinfo[0]['id'],
-      'begin': this.chaifen(this.data.date) + "T" +this.isAddZero(this.data.hour) + ":" + this.isAddZero(this.data.minute) + ":" + this.isAddZero(this.data.second),
-      'end': this.chaifen(this.data.dateend) + "T" + this.isAddZero(this.data.hour) + ":" + this.isAddZero(this.data.minute) + ":" + this.isAddZero(this.data.second),
-      'sign': this.data.stopmealsign,
-      'things': this.data.things
-    }
-    console.log(stopmealinfo);
-    wx.request({
-      url: 'https://jinn520.club/stopmeal',
-      method: 'POST',
-      data: stopmealinfo,
-      success(suc){
-        console.log(suc)
-      }
-    })
-  },
-
-  isAddZero: function(arr){
-    if(arr < 10)
+  isAddZero: function (arr) {
+    if (arr < 10)
       arr = '0' + arr
     return arr
   },
-  chaifen: function (e) {
-    var b = e.split('-')
-    if(b[1] < 10){
-      b[1] = '0' + b[1]
+
+  submitInfo: function(){
+    var that =this
+    let startDate = new Date(this.data.startDate)
+    let endDate = new Date(this.data.endDate)
+    for(let i = startDate.getDate(); i <= endDate.getDate(); i++){
+      var midInfo = {
+        userid: this.data.userinfo[0]['id'],
+        date: this.data.yearPri + "-" + this.isAddZero(this.data.monthPri) + "-" + this.isAddZero(i),
+        sign: this.data.sign,
+        things: this.data.things
+      }
+      wx.request({
+        url: 'https://jinn520.club/stopmeal/addStopMeal',
+        data: midInfo,
+        method: 'POST',
+        success: function(e){
+          wx.showToast({
+            title: '操作成功',
+            icon: 'success',
+            duration: 2000,
+            mask: true
+          })
+          that.setData({
+            startDate: that.data.startDatePri,
+            endDate: that.data.startDatePri,
+            sign: 0,
+            checked: true,
+            things: '',
+            isSubmit: true
+          })
+          console.log(that.data)
+        }
+      })
     }
-    if(b[2] < 10){
-      b[2] = '0' + b[2]
-    }
-    var c = b[0] + '-' + b[1] + '-' + b[2]
-    return c
-  },
+  }
 })

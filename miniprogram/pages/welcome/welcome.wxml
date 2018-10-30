@@ -1,8 +1,8 @@
 <view class='container'>
   <image class="avatar" src='/images/icon.png'></image>
   <text class="name">
-    <text style='color:#405f80;'>welcome</text>,快乐食堂</text>
-  <view class="go-container" bindtap="goHome">
-    <text class='go'>自助停餐加餐</text>
-  </view>
+    <text style='color:#405f80;'>welcome</text></text>
+  <button class="go-container" bindtap="goHome" disabled='{{isloading}}' loading='{{isloading}}' plain='true'>
+    自助停餐加餐
+  </button>
 </view>

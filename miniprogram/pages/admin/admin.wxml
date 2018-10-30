@@ -3,31 +3,31 @@
   <text>只能操作当月</text>
 </view>
 <view class="section">
-  <picker mode="date" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+  <picker mode="date" start="{{startDatePri}}" end="{{endDatePri}}" bindchange="bindDateChange">
     <view class="item">
       <text class='item-label'>开始日期</text>
-      <text class='item-content item-time'>{{date}}</text>
+      <text class='item-content item-time'>{{startDate}}</text>
     </view>
   </picker>
-  <picker mode="date" start="{{date}}" end="{{endDate}}" bindchange="bindDateChange2">
+  <picker mode="date" start="{{startDate}}" end="{{endDatePri}}" bindchange="bindDateChange2">
     <view class="item">
       <text class='item-label'>结束日期</text>
-      <text class='item-content item-time'>{{dateend}}</text>
+      <text class='item-content item-time'>{{endDate}}</text>
     </view>
   </picker>
   <view class="item">
     <text class='item-label'>操作标识</text>
     <radio-group class='item-content item-radio' bindchange='radiogroup'>
-      <radio value="0" checked="{{checked}}"/>停餐
-      <radio value="1"/>加餐
+      <radio value="0" checked="{{checked}}"/>加餐
+      <radio value="1"/>停餐
     </radio-group>
   </view>
   <view class="item">
     <text class='item-label'>备注信息</text>
-    <input type='text' placeholder='请输入备注' bindblur="getThings" class='item-content' placeholder-class="placeholderStyle"></input>
+    <input type='text' placeholder='请输入备注' value='{{things}}' bindblur="getThings" class='item-content' placeholder-class="placeholderStyle"></input>
   </view>
   <radio-group bindchange='radio' class='confirm'>
-      <radio value="stopmeal"/>确认无误！
+      <radio value="stopmeal" checked='{{!checked}}' />确认无误！
   </radio-group>
 <button class='btn' type='mini' plain='true' disabled="{{isSubmit}}" bindtap="submitInfo">提交信息</button>
 </view>

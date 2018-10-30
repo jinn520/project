@@ -3,15 +3,16 @@
   <view class='partname'>请选择部门:</view>
   <picker-view class='partchoose' indicator-style="height: 50rpx;" style="width: 50%; height: 200rpx;" bindchange="bindChange">
   <picker-view-column>
-    <view wx:for="{{departmentName}}" style="line-height: 50px">
+    <view wx:for="{{departmentName}}" wx:key="{{name}}" style="line-height: 50px">
       {{item.name}}
     </view>
   </picker-view-column>
 </picker-view>
 </view>
+<view class='partname'>请选择姓名:</view>
 <picker-view indicator-style="height: 50px;" style="width: 50%; height: 200px;" bindchange="bindChange2">
   <picker-view-column>
-    <view wx:for="{{partuserinfo}}" style="line-height: 50px">
+    <view wx:for="{{partuserinfo}}" wx:key="{{name}}" style="line-height: 50px">
       {{item.name}}
     </view>
   </picker-view-column>
