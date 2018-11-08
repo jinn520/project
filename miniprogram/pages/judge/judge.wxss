@@ -1,12 +1,39 @@
-/* pages/judge/judge.wxss */
-.partGroup {
+page {
+  background-color: #eee;
+}
+.item {
   display: flex;
   flex-direction: row;
+  margin-top: 20rpx;
+  background-color: #fff;
 }
-.partname {
-  padding-top: 40px;
-  padding-left: 20px;
+.item-label {
+  width: 240rpx;
+  height: 200rpx;
+  line-height: 200rpx;
+  text-align: center;
+  padding: 0 20rpx;
+  background-color: #f6fcfd;
+  color: #666;
 }
-.partchoose {
-  padding-left: 50rpx;
+
+.item-content {
+  text-align: center;
+}
+.btn-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+.btn {
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 30rpx auto;
+  text-align: center;
+  background-color: #b3d4db;
+  border-radius: 5px;
+  color: #efefef;
 }

@@ -18,7 +18,7 @@ page {
 }
 .tips>text {
   font-size: 14px;
-  margin-left: 25px;
+  margin-left: 20px;
 }
 .section {
   width: 100%;
@@ -53,6 +53,15 @@ page {
   top: 7px;
   left: 210rpx;
 }
+.item-remarks {
+  height: 220rpx;
+}
+.remarks {
+  border: 1px solid #efefef;
+  height: 150rpx;
+  width: 460rpx;
+  padding: 20rpx; 
+}
 .item-radio {
   top: 0;
 }
@@ -63,18 +72,26 @@ radio {
   top: 0;
 }
 .placeholderStyle {
-  font-size: 30rpx;
+  font-size: 32rpx;
 }
-.btn {
-  display: block;
-  width: 300rpx;
-  height: 80rpx;
-  margin: 10rpx auto;
-  line-height: 80rpx;
-  border: 1px solid #405f80;
-  border-radius: 5px;
-  text-align: center;
+.item-confirm {
+  margin: 20rpx 0;
 }
 .confirm {
   padding-left: 10rpx;
+  font-size: 30rpx;
+}
+.item-btn {
+  margin-top: 20rpx; 
+  background-color: #fff;
+  padding: 30rpx 0;
+}
+.btn {
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #b3d4db;
+  border-radius: 5px;
+  color: #efefef;
 }

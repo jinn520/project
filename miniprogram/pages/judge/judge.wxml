@@ -1,7 +1,7 @@
 <!--pages/judge/judge.wxml-->
-<view class='partGroup'>
-  <view class='partname'>请选择部门:</view>
-  <picker-view class='partchoose' indicator-style="height: 50rpx;" style="width: 50%; height: 200rpx;" bindchange="bindChange">
+<view class='item'>
+  <view class='item-label'>请选择部门:</view>
+  <picker-view class='item-content' indicator-style="height: 50rpx;" style="width: calc(100% - 240rpx); height: 200rpx;" bindchange="bindChange">
   <picker-view-column>
     <view wx:for="{{departmentName}}" wx:key="{{name}}" style="line-height: 50px">
       {{item.name}}
@@ -9,12 +9,17 @@
   </picker-view-column>
 </picker-view>
 </view>
-<view class='partname'>请选择姓名:</view>
-<picker-view indicator-style="height: 50px;" style="width: 50%; height: 200px;" bindchange="bindChange2">
+<view class='item'>
+<view class='item-label'>请选择姓名:</view>
+<picker-view class='item-content' indicator-style="height: 50rpx;" style="width: calc(100% - 240rpx); height: 200rpx;" bindchange="bindChange2">
   <picker-view-column>
     <view wx:for="{{partuserinfo}}" wx:key="{{name}}" style="line-height: 50px">
       {{item.name}}
     </view>
   </picker-view-column>
 </picker-view>
-<view bindtap='addwxname'>提交</view>
+</view>
+
+<view class="item" bindtap='addwxname'>
+  <view class='btn'>提交</view>
+</view>

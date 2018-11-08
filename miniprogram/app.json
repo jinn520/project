@@ -1,5 +1,5 @@
 {
-  "cloud": true,
+  "cloud":true,
   "pages": [
     "pages/welcome/welcome",
     "pages/admin/admin",

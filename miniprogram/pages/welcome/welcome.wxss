@@ -19,8 +19,9 @@ page {
   margin-top: 100rpx;
 }
 .go-container {
-  border: 1px solid #405f80;
+  border: 1px solid #e1ecf8;
   border-radius: 5px;
   text-align: center;
   margin-top: 180rpx;
+  color:#405f80;
 }

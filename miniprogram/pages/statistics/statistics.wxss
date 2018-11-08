@@ -1,6 +1,9 @@
 /* pages/statistics/statistics.wxss */
+.title {
+  text-align: center;
+}
 .calendarView {
-  padding-top: 50rpx
+  padding: 50rpx 20rpx 0;
 }
 .calendar {
   background-color:white; /*背景色为白色*/
@@ -32,4 +35,31 @@
   margin-left: 10px;
   font-size: 32rpx;
   text-align: justify;
+}
+.item-remarks {
+  height: 180rpx;
+  line-height: 30px;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.remarks {
+  height: 30px;
+}
+.item-btn {
+  margin-top: 20rpx; 
+  background-color: #fff;
+}
+.btn {
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background-color: #b3d4db;
+  border-radius: 5px;
+  color: #efefef;
 }
