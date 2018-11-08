@@ -13,7 +13,11 @@
   </view>
   <view class="item">
     <text class='item-label'>输入姓名</text>
-    <input type='text' placeholder='请输入姓名' class='item-content' placeholder-class="placeholderStyle" bindblur="getName"></input>
+    <input type='text' placeholder='请输入姓名' class='item-content' placeholder-class="placeholderStyle" bindblur="getName" value='{{name}}'></input>
   </view>
-  <view class='btn' bindtap='adduserinfo'>提 交</view>
+  <radio-group bindchange='radio'>
+      <radio value="1" checked='{{checked}}' />确认无误！
+  </radio-group>
+  <button class='btn' disabled='{{!checked}}' bindtap='adduserinfo'>提 交</button>
 </view>
+<view class="section" wx:elif="{{!permissions}}">没有该操作权限!</view>

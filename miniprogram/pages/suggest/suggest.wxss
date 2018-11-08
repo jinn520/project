@@ -1,1 +1,10 @@
 /* pages/suggest/suggest.wxss */
+.tips {
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #b3d4db;
+  color: #fff;
+  position: relative;
+}

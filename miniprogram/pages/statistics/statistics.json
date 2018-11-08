@@ -6,6 +6,5 @@
   "backgroundTextStyle": "dark",
   "usingComponents": {
     "calendar": "plugin://calendar/calendar"
-  },
-  "enablePullDownRefresh": true
+  }
 }

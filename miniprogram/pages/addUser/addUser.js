@@ -6,46 +6,45 @@ Page({
    */
   data: {
     permissions: false,
-    array:[{id:1,name:"12"},{id:2,name:"qwe"}],
     departmentName:[],
-    isclick:false,
     id:1,
-    name:null
+    name:'',
+    checked: false
   },
 
-cli: function () {
-  this.setData({
-    isclick: true
-  })
-  console.log(this.data.departmentName);
-},
+  onLoad: function(){
+    const app = getApp()
+    if (app.globalData[0]['rolesid'] == 2){
+      this.setData({
+        permissions: true
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
     var that=this
-    wx.request({
-      url: 'https://jinn520.club/department',//查找部门信息
-      method: "GET",
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        var middata = []
-        for(var index in res.data){
-          middata.push({id:res.data[index]["id"],name:res.data[index]["name"]})
+    if(this.data.permissions == true){
+      wx.request({
+        url: 'https://jinn520.club/department',//查找部门信息
+        method: "GET",
+        success(res) {
+          var middata = []
+          for (var index in res.data) {
+            middata.push({ id: res.data[index]["id"], name: res.data[index]["name"] })
+          }
+          that.setData({
+            departmentName: middata
+          })
         }
-        that.setData({
-          departmentName: middata
-        })
-      }
-    })
+      })
+    }
   },
   bindChange: function (e) {
     this.setData({
       id:this.data.departmentName[e.detail.value]["id"]
     })
-    // console.log(this.data.id)
   },
   getName: function(e){
     this.setData({
@@ -55,7 +54,7 @@ cli: function () {
   },
   adduserinfo: function(){
     var that=this
-    if(this.data.name!=null){
+    if(this.data.name!= ''){
       var userinfo = {
         rolesid: 1,
         name: this.data.name,
@@ -66,13 +65,22 @@ cli: function () {
         method: "POST",
         data: userinfo,
         success(res){
-          console.log(res)
+          wx.showToast({
+            title: '添加成功',
+          })
           that.setData({
-            name:''
+            name:'',
+            checked: false
           })
         } 
       })
     }
     else console.log("用户名不能为空！")
+  },
+
+  radio: function(e){
+    this.setData({
+      checked: true
+    })
   }
 })

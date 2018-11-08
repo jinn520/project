@@ -39,20 +39,20 @@
         "selectedIconPath": "/images/tarbar-home.png"
       },
       {
+        "pagePath": "pages/statistics/statistics",
+        "text": "日历全览",
+        "iconPath": "/images/tarbar-statistics-before.png",
+        "selectedIconPath": "/images/tarbar-statistics.png"
+      },
+      {
         "pagePath": "pages/addUser/addUser",
         "text": "添加用户",
         "iconPath": "/images/tarbar-dining-before.png",
         "selectedIconPath": "/images/tarbar-dining.png"
       },
       {
-        "pagePath": "pages/statistics/statistics",
-        "text": "统计",
-        "iconPath": "/images/tarbar-statistics-before.png",
-        "selectedIconPath": "/images/tarbar-statistics.png"
-      },
-      {
         "pagePath": "pages/suggest/suggest",
-        "text": "建议",
+        "text": "统计",
         "iconPath": "/images/tarbar-suggest-before.png",
         "selectedIconPath": "/images/tarbar-suggest.png"
       }

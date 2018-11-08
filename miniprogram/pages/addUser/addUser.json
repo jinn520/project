@@ -1,1 +1,7 @@
-{}
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "添加用户",
+  "backgroundColor": "#000000",
+  "backgroundTextStyle": "dark"
+}

@@ -1,2 +1,17 @@
-<!--pages/suggest/suggest.wxml-->
-<text>pages/suggest/suggest.wxml</text>
+<view wx:if="{{isAunt}}">
+  <view class='tips'>
+    <icon type='info' size='20'></icon>
+    <text>只能查询当月信息</text>
+  </view>
+  <picker mode="date" start="{{startDatePri}}" end="{{endDatePri}}" bindchange="bindDateChange">
+    <view class="item">
+      <text>查询日期:</text>
+      <text class='item-content item-time'>{{date}}</text>
+    </view>
+  </picker>
+  <view wx:for="{{news}}" wx:key="{{item}}" style="line-height: 40px">
+    {{item.name}}--{{item.sign}}--{{item.things}}
+  </view>
+  <view>当前日期用餐人数：</view>{{counts}}
+</view>
+<view wx:else>没有权限</view>

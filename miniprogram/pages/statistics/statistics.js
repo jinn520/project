@@ -20,7 +20,7 @@ Page({
     disabledClick: true
   },
   dayClick: function (event) {//日期点击事件
-  console.log(this.data)
+    console.log(this.data)
     if(this.data.isAddDayStyleLength == true){
       var midDayStyle = this.data.dayStyle
       midDayStyle.push({ month: 'current', day: '', color: 'white', background: '#FF4040' })
@@ -267,7 +267,8 @@ Page({
     var that = this
     let midDate = {
       userid: this.data.userinfo[0]["id"],
-      date: this.data.dateclick
+      date: this.data.dateclick,
+      things: this.data.things
     }
     wx.showModal({
       title: '提示',

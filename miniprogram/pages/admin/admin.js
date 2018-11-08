@@ -96,37 +96,38 @@ Page({
 
   submitInfo: function(){
     var that =this
+    var midInfo = []
     let startDate = new Date(this.data.startDate)
     let endDate = new Date(this.data.endDate)
     for(let i = startDate.getDate(); i <= endDate.getDate(); i++){
-      var midInfo = {
+      midInfo.push({
         userid: this.data.userinfo[0]['id'],
         date: this.data.yearPri + "-" + this.isAddZero(this.data.monthPri) + "-" + this.isAddZero(i),
         sign: this.data.sign,
         things: this.data.things
-      }
-      wx.request({
-        url: 'https://jinn520.club/stopmeal/addStopMeal',
-        data: midInfo,
-        method: 'POST',
-        success: function(e){
-          wx.showToast({
-            title: '操作成功',
-            icon: 'success',
-            duration: 2000,
-            mask: true
-          })
-          that.setData({
-            startDate: that.data.startDatePri,
-            endDate: that.data.startDatePri,
-            sign: 0,
-            checked: true,
-            things: '',
-            isSubmit: true
-          })
-          console.log(that.data)
-        }
       })
     }
+    wx.request({
+      url: 'https://jinn520.club/stopmeal/addStopMeal',
+      data: midInfo,
+      method: 'POST',
+      success: function (e) {
+        wx.showToast({
+          title: '操作成功',
+          icon: 'success',
+          duration: 2000,
+          mask: true
+        })
+        that.setData({
+          startDate: that.data.startDatePri,
+          endDate: that.data.startDatePri,
+          sign: 0,
+          checked: true,
+          things: '',
+          isSubmit: true
+        })
+        console.log(that.data)
+      }
+    })
   }
 })

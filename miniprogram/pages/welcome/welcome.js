@@ -14,6 +14,11 @@ Page({
     var that =this
     const app = getApp()
     app.globalData = this.data.userinfo
+    if(app.globalData[0]['rolesid'] == 2){
+      wx.switchTab({
+        url: '../suggest/suggest'
+      });
+    }
     wx.switchTab({
       url: '../admin/admin'
     });
