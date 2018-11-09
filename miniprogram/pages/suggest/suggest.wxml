@@ -1,17 +1,42 @@
 <view wx:if="{{isAunt}}">
   <view class='tips'>
-    <icon type='info' size='20'></icon>
+    <icon type='info' size='16'></icon>
     <text>只能查询当月信息</text>
   </view>
-  <picker mode="date" start="{{startDatePri}}" end="{{endDatePri}}" bindchange="bindDateChange">
+  <picker mode="date"
+          start="{{startDatePri}}" 
+          end="{{endDatePri}}" 
+          bindchange="bindDateChange">
     <view class="item">
-      <text>查询日期:</text>
+      <text class='item-label'>查询日期</text>
       <text class='item-content item-time'>{{date}}</text>
     </view>
   </picker>
-  <view wx:for="{{news}}" wx:key="{{item}}" style="line-height: 40px">
-    {{item.name}}--{{item.sign}}--{{item.things}}
+  <view class="item">
+    <text class='item-label'>应用餐总人数</text>
+    <text class='item-content'>{{allPerson}}人</text>
   </view>
-  <view>当前日期用餐人数：</view>{{counts}}
+  <view class="item">
+    <text class='item-label'>当前日期用餐人数</text>
+    <text class='item-content'>{{counts}}人</text>
+  </view>
+  <view>
+    <text class='item-label detail'>当前日期停餐详情</text>
+    <view wx:if="{{news.length>0}}" class="container">
+      <view class="table">
+        <view class="tr">
+          <view class="th">姓名</view>
+          <view class="th">状态</view>
+          <view class="th">停餐理由</view>
+        </view>
+        <view class="tr" wx:for="{{news}}" wx:key="{{item}}">
+          <view class='td'> {{item.name}} </view>
+          <view class="td"> {{item.sign}} </view>
+          <view class="td"> {{item.things}} </view>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="text-tips">当前日期无人停餐</view>
+  </view>
 </view>
 <view wx:else>没有权限</view>

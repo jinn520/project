@@ -10,7 +10,8 @@ Page({
     startDatePri: '',
     endDatePri: '',
     date: '',
-    counts: ''
+    counts: '',
+    allPerson: ''
   },
 
   /**
@@ -72,6 +73,7 @@ Page({
       method: 'POST',
       success: function (res) {
         console.log(res.data)
+        let num = 0
         let i = 0
         let allStopmeal = []
         for (let index in res.data) {
@@ -82,10 +84,12 @@ Page({
               things: res.data[index]["things"]
             })
           }else i++
+          num++
         }
         that.setData({
           news: allStopmeal,
-          counts: i
+          counts: i,
+          allPerson: num
         })
       },
     })

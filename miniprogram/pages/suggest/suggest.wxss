@@ -8,3 +8,71 @@
   color: #fff;
   position: relative;
 }
+.tips>icon {
+  position: absolute;
+  top: 10px;
+}
+.tips>text {
+  font-size: 14px;
+  margin-left: 20px;
+}
+.item {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+.item-label {
+  padding-left: 10rpx;
+  font-size: 32rpx;
+}
+.item-content {
+  margin-right: 20rpx;
+  float: right;
+}
+.item-time:after {
+  content: '>';
+  padding-left: 5px;
+  color: #bbb;
+}
+.detail {
+  height: 40px;
+  line-height: 40px;
+}
+.text-tips {
+  text-align: center;
+  color: #48717a;
+  font-size: 30rpx;
+}
+.table {
+  border-right: 0;
+  border-bottom: 0;
+  width: 98%;
+  font-size: 36rpx;
+}
+
+.tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.tr:first-child {
+   border-top: 1px solid #dadada;
+}
+.th, .td {
+  padding: 10px;
+  border-bottom: 1px solid #dadada;
+  border-right: 1px solid #dadada;
+  text-align: center;
+  display: flex;
+  justify-content:center;
+  align-items:Center;
+  width: 100%;
+}
+.th:first-child, .td:first-child {
+  border-left: 1px solid #dadada;
+}
+.th {
+  font-weight: 400;
+  background-color: #f3fbff;
+}

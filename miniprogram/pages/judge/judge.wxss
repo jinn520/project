@@ -33,7 +33,7 @@ page {
   line-height: 80rpx;
   margin: 30rpx auto;
   text-align: center;
-  background-color: #b3d4db;
+  background-color: #409eff;
   border-radius: 5px;
   color: #efefef;
 }
